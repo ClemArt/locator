@@ -13,6 +13,16 @@ function initialize() {
     center: new google.maps.LatLng(43.4331, 6.7372)
   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var socket = io();
+  var color = 0;
+
+  socket.on('color', function(color){
+    setColor(color);
+  });
+}
+
+function setColor(color){
+
 }

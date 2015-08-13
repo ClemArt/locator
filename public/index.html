@@ -5,6 +5,7 @@
   <link href="style.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1">
+  <script src="/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="script.js"></script>
 </head>
 
@@ -19,7 +20,9 @@
 
     </div>
     <div id="text-input">
-      <input id="msg" type="text" name="msg" placeholder="Type your message here...">
+      <div id="msg">
+        <input type="text" name="msg" placeholder="Type your message here...">
+      </div>
       <button id="send">Send</button>
     </div>
   </div>
