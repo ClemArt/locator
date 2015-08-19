@@ -1,4 +1,8 @@
-window.onload = loadScript;
+window.onload = function(){
+  if(navigator.geolocation){
+    loadScript();
+  }
+};
 
 function loadScript() {
   var script = document.createElement('script');
@@ -18,11 +22,34 @@ function initialize() {
   var socket = io();
   var color = 0;
 
-  socket.on('color', function(color){
-    setColor(color);
+  socket.on('color', function(col){
+    setColor(col);
   });
-}
 
-function setColor(color){
+  socket.on('msg', function(msg, lat, lng){
+    var info = new google.maps.InfoWindow({
+      content: msg,
+      position: {lat: lat, lng: lng},
+    });
+    info.open(map);
+  });
 
+  function sendMessage(){
+    var msg = document.getElementById('msg-input').value;
+    if(msg !== ''){
+      navigator.geolocation.getCurrentPosition(function(pos){
+        var coords = pos.coords;
+        socket.emit('msg', msg, coords.latitude, coords.longitude);
+      });
+    }
+    document.getElementById('msg-input').value = '';
+  };
+
+  function setColor(col){
+    color = col;
+    document.getElementById('send').style.backgroundColor = "hsl("+color+",100%,50%)";
+  }
+
+  //Event binding on elements
+  document.getElementById('send').addEventListener('click', sendMessage);
 }
