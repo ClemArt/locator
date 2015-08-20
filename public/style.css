@@ -40,18 +40,38 @@ body{
 #msg{
   position: absolute;
   left: 0;
-  right: 50px;
+  right: 100px;
   height: 100%;
+  border-radius: 10px 0 0 10px;
+  overflow: hidden;
+  box-shadow: 0 8px #c1c1c1;
+  padding-left: 10px;
+  background-color: #FFF;
 }
 
 #msg input{
   width: 100%;
   height: 100%;
+  font-size: 20px;
 }
 
 #send{
   position: absolute;
-  width: 50px;
+  width: 95px;
   right: 0;
   height: 100%;
+  border-radius: 0 10px 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 8px #c1c1c1;
+}
+
+#send.active,
+#send:active{
+  top: 8px;
+  box-shadow: none;
+}
+
+.info{
 }

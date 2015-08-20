@@ -25,8 +25,8 @@ io.on('connection', function(socket){
   var color = giveColor();
   socket.emit('color', color);
 
-  socket.on('msg', function(msg, lat, lng){
-      io.emit('msg', msg, lat, lng);
+  socket.on('msg', function(msg, col, lat, lng){
+      io.emit('msg', msg, col, lat, lng);
   });
 
   socket.on('disconnect', function(){
